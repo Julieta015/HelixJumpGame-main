@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TowerGenerator : MonoBehaviour
 {
-    public Transform ball;   // Inspector-ում քաշիր Ball-ը
+    public Transform ball; 
     public Material finish;
     public GameObject ringPrefab;
     public int ringCount = 15;

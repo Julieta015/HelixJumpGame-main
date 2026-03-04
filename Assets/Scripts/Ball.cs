@@ -354,7 +354,7 @@ public class BallBounce : MonoBehaviour
         {
             if (!change)
             {
-                if (Level.level == completLevel)
+                if (Level.level == completLevel || completLevel == 1)
                 {
                     Debug.Log("Level Completed!");
                     completLevel++;
