@@ -774,9 +774,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e01e46bd17bc840918430a7959a67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerRotatingNewInput
-  dangerPrefab: {fileID: 2211337439579003970, guid: 08eff11c6b1ff154ca525eb8fcc3be8e, type: 3}
   maxDangerSegments: 2
-  gapChance: 0.25
+  firstRingAlwaysSafe: 1
+  oddLevelsHaveNoDanger: 1
 --- !u!4 &7911373966183638484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
