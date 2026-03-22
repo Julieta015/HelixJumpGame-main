@@ -3541,7 +3541,7 @@ MonoBehaviour:
   startX: -5
   startY: -2
   startZ: 0
-  verticalStep: 3
+  verticalStep: 2
   forwardStep: 2
   sideCurve: 0.6
 --- !u!4 &528005972
@@ -10578,7 +10578,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0

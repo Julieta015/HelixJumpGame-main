@@ -23,6 +23,7 @@ public class LevelsColor : MonoBehaviour
         {
             Transform levelRow = mapManager.GetChild(i);
             Debug.Log(BallBounce.completLevel);
+            Debug.Log("Level = " + Level.level);
             Debug.Log("i'm in for");
             targetChild = mapManager.GetChild(i).GetChild(0).GetChild(1).GetChild(1); 
             MeshRenderer renderer = targetChild.GetComponent<MeshRenderer>();

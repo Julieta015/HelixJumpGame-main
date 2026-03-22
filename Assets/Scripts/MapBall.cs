@@ -7,8 +7,8 @@ public class BallLogic : MonoBehaviour
     public float moveSpeed = 5f;   // Լեվելից լեվել անցնելու արագությունը
 
     private Rigidbody rb;
-    private int lastTargetLevel = -1;
-
+    private int lastTargetLevel = 0;
+    int currentLevelIndex;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -19,7 +19,13 @@ public class BallLogic : MonoBehaviour
     void Update()
     {
         // Վերցնում ենք ընթացիկ բացված լեվելի ինդեքսը
-        int currentLevelIndex = BallBounce.completLevel -1;
+        currentLevelIndex = Level.level - 1;
+
+        if (Level.level == 0)
+        {
+            currentLevelIndex = 0;
+            lastTargetLevel = -1;
+        }
 
         if (levelsHolder != null && levelsHolder.childCount > currentLevelIndex)
         {
@@ -27,7 +33,7 @@ public class BallLogic : MonoBehaviour
 
             // 1. Շարժում ենք գնդակը դեպի լեվելի X և Z կոորդինատները
             Vector3 targetPos = new Vector3(targetLevel.position.x, transform.position.y, targetLevel.position.z);
-            rb.MovePosition(Vector3.Lerp(rb.position, targetPos, Time.deltaTime * moveSpeed));
+            rb.MovePosition(Vector3.Lerp(rb.position, targetPos, Time.deltaTime * moveSpeed * (currentLevelIndex + 5)));
 
             // 2. Եթե գնդակը հասել է նոր լեվելին, կարող ենք թարմացնել վիճակը
             if (currentLevelIndex != lastTargetLevel)
@@ -45,7 +51,7 @@ public class BallLogic : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.name.Contains("Level"))
         {
             // Զրոյացնում ենք արագությունը և տալիս նոր թռիչքի ուժ դեպի վերև
-            rb.linearVelocity = new Vector3(0, jumpForce, 0);
+            rb.linearVelocity = new Vector3(0, jumpForce , 0);
         }
     }
 }

@@ -278,13 +278,13 @@ public class RingRandomizer : MonoBehaviour
         switch (difficulty)
         {
             case RingDifficulty.Easy:
-                gapCount = Random.Range(2, 4);      // 2 կամ 3 gap
-                pattern.dangerCount = 1;            // հեշտ ռինգում թող ավելի հանգիստ լինի
+                gapCount = Random.Range(2, 4);      
+                pattern.dangerCount = Random.Range(0, 2);            
                 break;
 
             case RingDifficulty.Medium:
-                gapCount = Random.Range(2, 4);      // 2 կամ 3 gap
-                pattern.dangerCount = Random.Range(1, 3); // 1 կամ 2 danger
+                gapCount = Random.Range(2, 4);      
+                pattern.dangerCount = Random.Range(1, 3); 
                 break;
 
             case RingDifficulty.Hard:
