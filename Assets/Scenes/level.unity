@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c210eb59efd484a439c7ec39dac95830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BallBounce
-  bounceForce: 1
+  bounceForce: 1.8
   spinSpeed: 150
   splashFadeDelay: 0.8
   splashFadeTime: 0.4
@@ -3452,7 +3452,7 @@ MonoBehaviour:
   finish: {fileID: 2100000, guid: 3928cca53b0371e4ea725e3393973aa1, type: 2}
   ringPrefab: {fileID: 7386193763591683950, guid: a41bad4e4264452459950cab001c5747, type: 3}
   ringCount: 15
-  ringHeight: 0.2
+  ringHeight: 0.29
   rotationSpeed: 0.3
 --- !u!4 &1763481619
 Transform:
@@ -3507,7 +3507,7 @@ Transform:
   m_GameObject: {fileID: 1884619307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.22622, y: 7.56695, z: -1.62845}
+  m_LocalPosition: {x: -2.22622, y: 7.56695, z: 126.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
