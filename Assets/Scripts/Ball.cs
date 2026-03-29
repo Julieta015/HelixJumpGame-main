@@ -294,17 +294,19 @@ public class BallBounce : MonoBehaviour
     }
 }*/
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using static UnityEngine.Rendering.HableCurve;
 public class BallBounce : MonoBehaviour
 {
     [Header("Bounce")]
     public float bounceForce = 4f;     // սա իրականում "վերևի արագությունն" է (միշտ նույնը)
     public float spinSpeed = 180f;
-
+    public List<Material> materials;
     public float splashFadeDelay = 0.8f; // Որքան մնա անփոփոխ
-    public float splashFadeTime = 0.4f;  // Որքան տևի անհետանալը
+    public float splashFadeTime = 0.3f;  // Որքան տևի անհետանալը
 
     [Header("Audio")]
     public AudioClip segmentTouchSound;
@@ -316,15 +318,22 @@ public class BallBounce : MonoBehaviour
     private bool change = false;
     public static int completLevel = 1;
 
-    private int completSeg = 0;     // քանի ScoreZone է անցել առանց հարթակ դիպչելու
+    private int completSeg = 1;     // քանի ScoreZone է անցել առանց հարթակ դիպչելու
     private bool isFire = false;    // fire mode
 
+    public Clouds cloud;
     void Start()
     {
+        Level.EnsureProgressLoaded();
+
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         ballRenderer = GetComponent<MeshRenderer>();
-
+        Material levelMaterial = GetLevelMaterial();
+        if (ballRenderer != null && levelMaterial != null)
+        {
+            ballRenderer.material = levelMaterial;
+        }
         if (audioSource == null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -354,17 +363,14 @@ public class BallBounce : MonoBehaviour
         {
             if (!change)
             {
-                if (Level.level == completLevel || completLevel == 1)
+                if (Level.level == completLevel) // || complevel == 1
                 {
                     Debug.Log("Level Completed!");
-                    completLevel++;
-                    Level.level = completLevel;
+                    Level.UnlockNextLevel();
+                    StartCoroutine(cloud.CloudMove());
                 }
                 
                 change = true;
-
-                PlayerPrefs.SetInt("SavedLevel", completLevel);
-                PlayerPrefs.Save();
 
                 SceneManager.LoadScene(1);
             }
@@ -391,7 +397,12 @@ public class BallBounce : MonoBehaviour
 
             GameObject splash = Instantiate(splashPrefab, spawnPos, splashRot);
             splash.transform.SetParent(collision.transform);
-
+            SpriteRenderer sp = splash.GetComponent<SpriteRenderer>();
+            Material levelMaterial = GetLevelMaterial();
+            if (sp != null && levelMaterial != null)
+            {
+                sp.color = levelMaterial.color;
+            }
             // 3. Կանչում ենք անհետացման ֆունկցիան հենց այս սկրիպտից
             StartCoroutine(FadeAndDestroySplash(splash));
 
@@ -432,6 +443,13 @@ public class BallBounce : MonoBehaviour
         if (splash != null)
         {
             SpriteRenderer sr = splash.GetComponent<SpriteRenderer>();
+
+            Material levelMaterial = GetLevelMaterial();
+            if (sr != null && levelMaterial != null)
+            {
+                sr.color = levelMaterial.color;
+            }
+
             if (sr != null)
             {
                 float elapsed = 0;
@@ -479,8 +497,11 @@ public class BallBounce : MonoBehaviour
         isFire = false;
         completSeg = 0;
 
-        if (ballRenderer != null)
-            ballRenderer.material.color = Color.blue;
+        Material levelMaterial = GetLevelMaterial();
+        if (ballRenderer != null && levelMaterial != null)
+            ballRenderer.material = levelMaterial;
+
+
 
         // ✅ Fire-ից հետո էլի նույն ստատիկ bounce
         Vector3 v = rb.linearVelocity;
@@ -497,5 +518,19 @@ public class BallBounce : MonoBehaviour
         // Հիմա թողնում եմ քո մոտ եղածը՝ Done()
         if (TowerGenerator.Instance != null)
             TowerGenerator.Instance.Done();
+    }
+
+    Material GetLevelMaterial()
+    {
+        return GetMaterialByIndex(materials, Level.level - 1);
+    }
+
+    Material GetMaterialByIndex(List<Material> source, int rawIndex)
+    {
+        if (source == null || source.Count == 0)
+            return null;
+
+        int safeIndex = ((rawIndex % source.Count) + source.Count) % source.Count;
+        return source[safeIndex];
     }
 }

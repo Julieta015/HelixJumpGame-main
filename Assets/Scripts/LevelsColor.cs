@@ -5,12 +5,13 @@ public class LevelsColor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Transform mapManager; // Քո MapManager-ը
     Transform targetChild;
-    private int lastProcessedLevel = -1;
+    private int lastProcessedLevel = 0;
     
     void LateUpdate()
     {
         if (BallBounce.completLevel > lastProcessedLevel)
         {
+            Debug.Log("if why?");
             ChangeColor();
             lastProcessedLevel = BallBounce.completLevel;
         }

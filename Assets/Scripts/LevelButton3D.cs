@@ -24,10 +24,10 @@ public class LevelButton3D : MonoBehaviour
 
     void HandleLevelClick(int levelNum)
     {
-        if (levelNum < BallBounce.completLevel)
+        if (levelNum <= BallBounce.completLevel)
         {
             Debug.Log("Ընտրվեց Լեվել: " + levelNum);
-            Level.level = levelNum;
+            Level.SelectLevel(levelNum);
         }
         
     }

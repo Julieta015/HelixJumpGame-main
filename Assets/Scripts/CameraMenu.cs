@@ -4,7 +4,7 @@ public class CameraFollowMap : MonoBehaviour
 {
     public float scrollSpeed = 0.5f; // Շարժվելու արագությունը
     public float minY = 0f;          // Ամենացածր կետը (Level 1)
-    public float maxY = 60f;         // Ամենաբարձր կետը (Level 20)
+    public float maxY = 50f;         // Ամենաբարձր կետը (Level 20)
 
     private Vector3 lastMousePosition;
 

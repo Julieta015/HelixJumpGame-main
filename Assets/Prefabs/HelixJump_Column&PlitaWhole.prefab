@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3843044974259330405}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.166, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1771, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223,6 +223,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 0df4cf14d2479034da3c44e48d18df78, type: 2}
     - target: {fileID: 5988881256312858879, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5988881256312858879, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
@@ -284,6 +288,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3177190862772966185}
+    - targetCorrespondingSourceObject: {fileID: 8487167654232718067, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4571423265980713903}
     - targetCorrespondingSourceObject: {fileID: 8144394004440419581, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4944508292138201180}
@@ -495,6 +502,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!1 &2272096568530352332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8487167654232718067, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
+  m_PrefabInstance: {fileID: 7656226885753061951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4571423265980713903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272096568530352332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718759fc5c592ae4a9edb1a9a3d6eaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  column:
+  - {fileID: 2100000, guid: 79b21d52713ef1c4480a296aefafc201, type: 2}
+  - {fileID: 2100000, guid: 552dad52901b6644396df327998f84be, type: 2}
+  - {fileID: 2100000, guid: 938f3f2ce9f4a8c4fb21ec4b10644720, type: 2}
+  - {fileID: 2100000, guid: 7cb6599a673a0c64b9fa9a73fb35da95, type: 2}
+  - {fileID: 2100000, guid: 1630b1601b7df7747b9e0c76715ec4c6, type: 2}
+  - {fileID: 2100000, guid: 927e3344529db7f449bc57fa8f73a4d1, type: 2}
+  - {fileID: 2100000, guid: 45b252360bd7c7e45815c6460eca1e62, type: 2}
+  - {fileID: 2100000, guid: 6c8287558d65a9f41a5f6b24ab4767f7, type: 2}
 --- !u!1 &3112226287311827353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4507900262165122138, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}
@@ -785,6 +818,20 @@ MonoBehaviour:
   maxDangerSegments: 2
   firstRingAlwaysSafe: 1
   oddLevelsHaveNoDanger: 1
+  materials:
+  - {fileID: 2100000, guid: 0df4cf14d2479034da3c44e48d18df78, type: 2}
+  - {fileID: 2100000, guid: 2ec20114639f7424dbb1729937a60f8b, type: 2}
+  - {fileID: 2100000, guid: 3be57863a8b86fc45afc6f02635e6b2c, type: 2}
+  - {fileID: 2100000, guid: 58d71578270d75f418f1637099faefd3, type: 2}
+  - {fileID: 2100000, guid: abbb9c56aae342a47bb86d541be9b130, type: 2}
+  - {fileID: 2100000, guid: 722609543f9b511498cdd4a54b6c5d9e, type: 2}
+  - {fileID: 2100000, guid: a92fd88aca257d44e986cc28c3ac67b2, type: 2}
+  - {fileID: 2100000, guid: 1f8521a0fe2e8074f97293dda16a3058, type: 2}
+  dangerMaterials:
+  - {fileID: 2100000, guid: 292ecbf8f668be746897ad64ee7e516a, type: 2}
+  - {fileID: 2100000, guid: cfa675d57b6c89248b0790b70b47480e, type: 2}
+  - {fileID: 2100000, guid: 15c9aa9078eafb4489dc2650e025ce33, type: 2}
+  - {fileID: 2100000, guid: cc202605244c502458eb09b319b94b84, type: 2}
 --- !u!4 &7911373966183638484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf1d0e46233113145b5c7d1b53e60e08, type: 3}

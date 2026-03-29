@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.Collections;
 public class Button : MonoBehaviour
 {
     [Header("Click sound")]
     public AudioClip clickSound;      // Քաշիր այստեղ քո ձայնի ֆայլը
     private AudioSource audioSource;
-
+    public Clouds cloud;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -23,17 +23,31 @@ public class Button : MonoBehaviour
             audioSource.PlayOneShot(clickSound);
     }
 
-    public void Play() 
+    public void Play()
     {
-        PlayClickSound();
+        StartCoroutine(PlayRoutine());
+    }
+
+    IEnumerator PlayRoutine()
+    {
+
+        yield return StartCoroutine(cloud.CloudMove());
+
         SceneManager.LoadScene(0);
     }
 
+
+
+
+
     public void Map()
     {
-        PlayClickSound();
         SceneManager.LoadScene(1);
     }
+
+    
+        
+    
 
     public void GameOver()
     {       

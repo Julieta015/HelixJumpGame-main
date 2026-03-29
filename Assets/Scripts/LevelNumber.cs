@@ -8,14 +8,14 @@ public class LevelNumber : MonoBehaviour
 
     void Start()
     {
-        if (Level.level == 0)
-        {
-            levelText.text = 1.ToString();
-        }
-        else
-        {
+        //if (Level.level == 0)
+        //{
+        //    levelText.text = 1.ToString();
+        //}
+        //else
+        //{
             levelText.text = Level.level.ToString();
-        }
+        //}
         
     }
 }

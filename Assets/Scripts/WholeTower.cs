@@ -9,6 +9,7 @@ public class TowerGenerator : MonoBehaviour
     public int ringCount = 15;
     public float ringHeight = 0.6f;
     public float rotationSpeed = 0.3f;
+    public float debrisLifetime = 3f;
     private float lastMouseX;
     public static TowerGenerator Instance;
     void Start()
@@ -51,7 +52,7 @@ public class TowerGenerator : MonoBehaviour
             );
 
             // փոքր random rotation, որ չլինեն նույն gap-երը
-            ring.transform.Rotate(0, Random.Range(0, 360f), 0);
+            //ring.transform.Rotate(0, Random.Range(0, 360f), 0);
         }
     }
 
@@ -77,7 +78,6 @@ public class TowerGenerator : MonoBehaviour
             if (mr != null)
             {
                 mr.material = finish;
-
             }
 
             segment.tag = "LevelComplet";
@@ -111,8 +111,7 @@ public class TowerGenerator : MonoBehaviour
 
             foreach (Transform segment in firstRing)
             {
-                
-                if (segment.name.Contains("ScoreZone") || segment.name.Contains("ScoreZone")) continue;
+                if (segment.name.Contains("ScoreZone")) continue;
 
                 segment.SetParent(null);
                 Rigidbody rb = segment.GetComponent<Rigidbody>();
@@ -136,7 +135,8 @@ public class TowerGenerator : MonoBehaviour
                     // Ավելացրու պատահական պտույտ
                     rb.angularVelocity = new Vector3(Random.Range(-5, 5), 5f, Random.Range(-5, 5));
                 }
-                //Destroy(segment.gameObject, 3f);
+
+                Destroy(segment.gameObject, debrisLifetime);
             }
             Destroy(firstRing.gameObject);
         }
