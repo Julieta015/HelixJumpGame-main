@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LevelButton3D : MonoBehaviour
 {
+    public static event System.Action<int> LevelSelected;
+
     public int levelToLoad;
 
     void Update()
@@ -28,6 +30,7 @@ public class LevelButton3D : MonoBehaviour
         {
             Debug.Log("Ընտրվեց Լեվել: " + levelNum);
             Level.SelectLevel(levelNum);
+            LevelSelected?.Invoke(levelNum);
         }
         
     }
