@@ -3573,8 +3573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelsColor
   mapManager: {fileID: 528005972}
-  completedLevelColor: {r: 0, g: 1, b: 0, a: 1}
-  currentLevelColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &532686983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,7 +7722,7 @@ Transform:
   m_GameObject: {fileID: 1040154394}
   serializedVersion: 2
   m_LocalRotation: {x: 0.047426842, y: 0.7055145, z: 0.7055145, w: -0.04742682}
-  m_LocalPosition: {x: -1.42, y: 12.5, z: 12.85}
+  m_LocalPosition: {x: -1.61, y: 11.689, z: 12.87}
   m_LocalScale: {x: 6.4099984, y: 6.4099984, z: 6.4099984}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13240,7 +13238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1662, y: -0}
+  m_AnchoredPosition: {x: 1397, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821798235
@@ -13255,7 +13253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c72bcfbc13a8db4a8e4babaf28c3c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 600
 --- !u!212 &1821798236
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13818,7 +13815,7 @@ Transform:
   m_GameObject: {fileID: 1884317892}
   serializedVersion: 2
   m_LocalRotation: {x: -0.08037815, y: 0.7025236, z: 0.7025236, w: 0.08037815}
-  m_LocalPosition: {x: -3.46, y: 7, z: 8.57}
+  m_LocalPosition: {x: -3.71, y: 5.88, z: 9.11}
   m_LocalScale: {x: 6.4099984, y: 6.4099984, z: 6.4099984}
   m_ConstrainProportionsScale: 0
   m_Children:

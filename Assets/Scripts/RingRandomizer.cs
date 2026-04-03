@@ -156,7 +156,7 @@ public class RingRandomizer : MonoBehaviour
         RingPattern pattern = new RingPattern();
         pattern.gapIndices = new List<int>();
 
-        int gapCount = 0;
+        int gapCount = 1;
 
         switch (difficulty)
         {

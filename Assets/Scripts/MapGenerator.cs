@@ -17,9 +17,11 @@ public class MapGenerator : MonoBehaviour
     public float verticalStep = 2f;
     public float forwardStep = 1f;
     public float sideCurve = 2.5f;
+    public float sineFrequency = 1.2f;
 
     void Start()
     {
+        ClearGeneratedLevels();
         GenerateMap();
     }
 
@@ -67,8 +69,7 @@ public class MapGenerator : MonoBehaviour
     {
         for (int i = 0; i < totalLevels; i++)
         {
-            // ՁՈՂԵՐԻ ԲԱՆԱՁԵՎԸ (ԱՆՓՈՓՈԽ)
-            float xPos = startX + Mathf.Sin(i * 2.8f) * sideCurve;
+            float xPos = startX + Mathf.Sin((i % 2) * sineFrequency) * sideCurve;
             float yPos = startY + (i * verticalStep);
             float zPos = startZ + (i * forwardStep);
 
@@ -95,6 +96,14 @@ public class MapGenerator : MonoBehaviour
 
             // Կանչում ենք կղզու ստեղծումը
             CreateIsland(i, spawnPos);
+        }
+    }
+
+    void ClearGeneratedLevels()
+    {
+        for (int i = transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
     }
 }

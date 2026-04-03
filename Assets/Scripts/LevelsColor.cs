@@ -2,83 +2,114 @@ using UnityEngine;
 
 public class LevelsColor : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Transform mapManager; // Քո MapManager-ը
-    Transform targetChild;
-    private int lastProcessedLevel = 0;
-    
+    public Transform mapManager;
+
+    [Header("Level Colors")]
+    public Color completedLevelColor = Color.green;
+    public Color currentLevelColor = Color.yellow;
+
+    private int lastProcessedCompletedLevel = -1;
+    private int lastProcessedChildCount = -1;
+
+    void Start()
+    {
+        RefreshLevelStates(force: true);
+    }
+
     void LateUpdate()
     {
-        if (BallBounce.completLevel > lastProcessedLevel)
-        {
-            Debug.Log("if why?");
-            ChangeColor();
-            lastProcessedLevel = BallBounce.completLevel;
-        }
+        RefreshLevelStates(force: false);
     }
-    void ChangeColor()
+
+    void RefreshLevelStates(bool force)
     {
-        // Շղթան գնում է այսպես.
-        // MapManager -> 2-րդ child (1) -> 2-րդ child (1) -> 2-րդ child (1)
-        for (int i = 0; i < BallBounce.completLevel; i++)
+        if (mapManager == null)
+            return;
+
+        int completedLevel = Mathf.Max(1, BallBounce.completLevel);
+        int childCount = mapManager.childCount;
+
+        if (!force &&
+            completedLevel == lastProcessedCompletedLevel &&
+            childCount == lastProcessedChildCount)
+        {
+            return;
+        }
+
+        for (int i = 0; i < childCount; i++)
         {
             Transform levelRow = mapManager.GetChild(i);
-            Debug.Log(BallBounce.completLevel);
-            Debug.Log("Level = " + Level.level);
-            Debug.Log("i'm in for");
-            targetChild = mapManager.GetChild(i).GetChild(0).GetChild(1).GetChild(1); 
-            MeshRenderer renderer = targetChild.GetComponent<MeshRenderer>();
-            Debug.Log(targetChild.name);
-            if (renderer != null)
+            int levelNumber = i + 1;
+
+            if (TryGetLevelRenderer(levelRow, out MeshRenderer renderer))
             {
-                if (BallBounce.completLevel == i + 1)
+                if (levelNumber < completedLevel)
                 {
-                    renderer.material.color = Color.yellow;
-                    Level.level = BallBounce.completLevel  ;
-                    Debug.Log(Level.level);
-                    Lock colLock = mapManager.GetChild(i).GetComponentInChildren<Lock>(true);
-                    OpenAllLocksInLevel(levelRow);
-                    Lock2.Instance.OpenLock();
+                    renderer.material.color = completedLevelColor;
                 }
-                else {
-                    Debug.Log("i'm in material if");
-                    renderer.material.color = Color.green;
-                    DisableLocks(levelRow);
+                else if (levelNumber == completedLevel)
+                {
+                    renderer.material.color = currentLevelColor;
                 }
-
-                
             }
+
+            bool shouldBeLocked = levelNumber > completedLevel;
+            SetLocksActive(levelRow, shouldBeLocked);
         }
 
-        void OpenAllLocksInLevel(Transform levelTransform)
-        {
-            // GetComponentsInChildren (հոգնակի) - սա գտնում է ԲՈԼՈՐ կողպեքները այս լեվելի տակ
-            Lock[] allLocks = levelTransform.GetComponentsInChildren<Lock>(true);
-            foreach (Lock l in allLocks)
-            {
-                l.OpenLock();
-            }
-            Lock2[] allLocks2 = levelTransform.GetComponentsInChildren<Lock2>(true);
-            foreach (Lock2 l2 in allLocks2) l2.OpenLock();
-        }
-
-        void DisableLocks(Transform levelTransform)
-        {
-            Lock[] allLocks = levelTransform.GetComponentsInChildren<Lock>(true);
-            foreach (Lock l in allLocks)
-            {
-                // Եթե սցենան նորից է բացվել, ուղղակի անջատում ենք անցած լեվելների կողպեքները
-                if (l.locks != null) l.locks.SetActive(false);
-            }
-
-            Lock2[] allLocks2 = levelTransform.GetComponentsInChildren<Lock2>(true);
-            foreach (Lock2 l2 in allLocks2)
-            {
-                if (l2.lock1 != null) l2.lock1.SetActive(false);
-                if (l2.lock2 != null) l2.lock2.SetActive(false);
-            }
-        }
-
+        lastProcessedCompletedLevel = completedLevel;
+        lastProcessedChildCount = childCount;
     }
-    
+
+    bool TryGetLevelRenderer(Transform levelRow, out MeshRenderer renderer)
+    {
+        renderer = null;
+
+        if (levelRow == null || levelRow.childCount == 0)
+            return false;
+
+        Transform firstChild = levelRow.GetChild(0);
+        if (firstChild.childCount <= 1)
+            return false;
+
+        Transform secondChild = firstChild.GetChild(1);
+        if (secondChild.childCount <= 1)
+            return false;
+
+        Transform targetChild = secondChild.GetChild(1);
+        renderer = targetChild.GetComponent<MeshRenderer>();
+        return renderer != null;
+    }
+
+    void SetLocksActive(Transform levelTransform, bool isLocked)
+    {
+        if (levelTransform == null)
+            return;
+
+        Lock[] allLocks = levelTransform.GetComponentsInChildren<Lock>(true);
+        foreach (Lock levelLock in allLocks)
+        {
+            if (levelLock != null && levelLock.locks != null)
+            {
+                levelLock.locks.SetActive(isLocked);
+            }
+        }
+
+        Lock2[] allDoubleLocks = levelTransform.GetComponentsInChildren<Lock2>(true);
+        foreach (Lock2 levelLock in allDoubleLocks)
+        {
+            if (levelLock == null)
+                continue;
+
+            if (levelLock.lock1 != null)
+            {
+                levelLock.lock1.SetActive(isLocked);
+            }
+
+            if (levelLock.lock2 != null)
+            {
+                levelLock.lock2.SetActive(isLocked);
+            }
+        }
+    }
 }

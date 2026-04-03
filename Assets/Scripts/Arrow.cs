@@ -52,19 +52,20 @@ public class CameraMove : MonoBehaviour
         if (mapManager == null || mapManager.childCount == 0)
             return null;
 
-        int unlockedLevel = Mathf.Max(1, BallBounce.completLevel);
+        int targetLevelNumber = Level.level > 0 ? Level.level : BallBounce.completLevel;
+        targetLevelNumber = Mathf.Clamp(targetLevelNumber, 1, BallBounce.completLevel);
 
         for (int i = 0; i < mapManager.childCount; i++)
         {
             Transform child = mapManager.GetChild(i);
             LevelButton3D levelButton = child.GetComponent<LevelButton3D>();
-            if (levelButton != null && levelButton.levelToLoad == unlockedLevel)
+            if (levelButton != null && levelButton.levelToLoad == targetLevelNumber)
             {
                 return child;
             }
         }
 
-        int fallbackIndex = Mathf.Clamp(unlockedLevel - 1, 0, mapManager.childCount - 1);
+        int fallbackIndex = Mathf.Clamp(targetLevelNumber - 1, 0, mapManager.childCount - 1);
         return mapManager.GetChild(fallbackIndex);
     }
 

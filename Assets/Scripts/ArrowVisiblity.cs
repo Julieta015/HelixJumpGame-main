@@ -8,8 +8,6 @@ public class ArrowVisiblity : MonoBehaviour
     public float hideDistance = 2f; // Ինչքան մոտ լինի, որ սլաքը կորի
     public float targetYOffset = 5f;
 
-    bool hasManualLevelSelection;
-
     void Awake()
     {
         if (playButton == null)
@@ -30,25 +28,12 @@ public class ArrowVisiblity : MonoBehaviour
     void OnDisable()
     {
         LevelButton3D.LevelSelected -= HandleLevelSelected;
-        hasManualLevelSelection = false;
     }
 
     void Update()
     {
         if (arrowButton == null || levelsHolder == null)
             return;
-
-        if (hasManualLevelSelection)
-        {
-            arrowButton.SetActive(false);
-
-            if (playButton != null)
-            {
-                playButton.SetActive(true);
-            }
-
-            return;
-        }
 
         Transform targetLevel = GetTargetLevel();
         if (targetLevel == null)
@@ -84,19 +69,20 @@ public class ArrowVisiblity : MonoBehaviour
         if (levelsHolder == null || levelsHolder.childCount == 0)
             return null;
 
-        int unlockedLevel = Mathf.Max(1, BallBounce.completLevel);
+        int targetLevelNumber = Level.level > 0 ? Level.level : BallBounce.completLevel;
+        targetLevelNumber = Mathf.Clamp(targetLevelNumber, 1, BallBounce.completLevel);
 
         for (int i = 0; i < levelsHolder.childCount; i++)
         {
             Transform child = levelsHolder.GetChild(i);
             LevelButton3D levelButton = child.GetComponent<LevelButton3D>();
-            if (levelButton != null && levelButton.levelToLoad == unlockedLevel)
+            if (levelButton != null && levelButton.levelToLoad == targetLevelNumber)
             {
                 return child;
             }
         }
 
-        int fallbackIndex = Mathf.Clamp(unlockedLevel - 1, 0, levelsHolder.childCount - 1);
+        int fallbackIndex = Mathf.Clamp(targetLevelNumber - 1, 0, levelsHolder.childCount - 1);
         return levelsHolder.GetChild(fallbackIndex);
     }
 
@@ -132,8 +118,6 @@ public class ArrowVisiblity : MonoBehaviour
 
     void HandleLevelSelected(int selectedLevel)
     {
-        hasManualLevelSelection = true;
-
         if (arrowButton != null)
         {
             arrowButton.SetActive(false);
