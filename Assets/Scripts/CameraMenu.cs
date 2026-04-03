@@ -5,7 +5,7 @@ public class CameraFollowMap : MonoBehaviour
 {
     public float scrollSpeed = 0.5f; // Շարժվելու արագությունը
     public float minY = 0f;          // Ամենացածր կետը (Level 1)
-    public float maxY = 50f;         // Ամենաբարձր կետը (Level 20)
+    public float maxY = 40f;         // Ամենաբարձր կետը (Level 20)
 
     private Vector3 lastMousePosition;
 
@@ -31,7 +31,7 @@ public class CameraFollowMap : MonoBehaviour
             // Շարժում ենք տեսախցիկը Y և Z առանցքներով, բայց ոչ X
             float moveY = delta.y * scrollSpeed * Time.deltaTime;
 
-            Vector3 newPos = transform.position + new Vector3(0f, -moveY, -moveY * 0.5f);
+            Vector3 newPos = transform.position + new Vector3(0f, -moveY, -moveY * 0.6f);
 
             // Սահմանափակում ենք, որ տեսախցիկը քարտեզից դուրս չգնա
             newPos.y = Mathf.Clamp(newPos.y, minY + 5f, maxY);
