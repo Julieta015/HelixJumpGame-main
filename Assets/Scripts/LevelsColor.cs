@@ -5,7 +5,7 @@ public class LevelsColor : MonoBehaviour
     public Transform mapManager;
 
     [Header("Level Colors")]
-    public Color completedLevelColor = Color.green;
+    public Color completedLevelColor = new Color32(255, 225, 0, 255);
     public Color currentLevelColor = Color.yellow;
 
     private int lastProcessedCompletedLevel = -1;
@@ -19,6 +19,7 @@ public class LevelsColor : MonoBehaviour
     void LateUpdate()
     {
         RefreshLevelStates(force: false);
+
     }
 
     void RefreshLevelStates(bool force)
@@ -26,9 +27,10 @@ public class LevelsColor : MonoBehaviour
         if (mapManager == null)
             return;
 
-        int completedLevel = Mathf.Max(1, BallBounce.completLevel);
+        int completedLevel = BallBounce.completLevel;
         int childCount = mapManager.childCount;
-
+        Debug.Log("completedLevel");
+        Debug.Log(completedLevel);
         if (!force &&
             completedLevel == lastProcessedCompletedLevel &&
             childCount == lastProcessedChildCount)
@@ -54,7 +56,9 @@ public class LevelsColor : MonoBehaviour
             }
 
             bool shouldBeLocked = levelNumber > completedLevel;
+
             SetLocksActive(levelRow, shouldBeLocked);
+
         }
 
         lastProcessedCompletedLevel = completedLevel;
@@ -79,6 +83,7 @@ public class LevelsColor : MonoBehaviour
         Transform targetChild = secondChild.GetChild(1);
         renderer = targetChild.GetComponent<MeshRenderer>();
         return renderer != null;
+
     }
 
     void SetLocksActive(Transform levelTransform, bool isLocked)

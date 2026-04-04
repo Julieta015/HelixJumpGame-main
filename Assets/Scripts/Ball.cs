@@ -298,7 +298,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.HableCurve;
+
 public class BallBounce : MonoBehaviour
 {
     [Header("Bounce")]
@@ -324,7 +324,7 @@ public class BallBounce : MonoBehaviour
     public Clouds cloud;
     void Start()
     {
-        Level.EnsureProgressLoaded();
+
 
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -350,6 +350,7 @@ public class BallBounce : MonoBehaviour
         transform.Rotate(0f, spinSpeed * Time.deltaTime, 0f, Space.Self);
     }
 
+
     void OnCollisionEnter(Collision collision)
     {
         // Ստուգում ենք տակինը (ինչի վրա է կանգնել)
@@ -363,11 +364,13 @@ public class BallBounce : MonoBehaviour
         {
             if (!change)
             {
-                if (Level.level == completLevel) // || complevel == 1
+                if (Level.level == completLevel || completLevel == 1) // || 
                 {
-                    Debug.Log("Level Completed!");
-                    Level.UnlockNextLevel();
-                    StartCoroutine(cloud.CloudMove());
+                    Debug.Log("Level Completed!");                  
+                    
+                    completLevel++;
+                    Level.level = completLevel;
+                    //StartCoroutine(cloud.CloudMove());
                 }
                 
                 change = true;

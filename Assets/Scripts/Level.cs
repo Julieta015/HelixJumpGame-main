@@ -3,10 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
-    private const string SavedLevelKey = "SavedLevel";
+    //private const string SavedLevelKey = "SavedLevel";
     public static int level;
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    /*[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void BootstrapProgress()
     {
         EnsureProgressLoaded();
@@ -41,6 +41,6 @@ public class Level : MonoBehaviour
 
         PlayerPrefs.SetInt(SavedLevelKey, BallBounce.completLevel);
         PlayerPrefs.Save();
-    }
+    }*/
 
 }
