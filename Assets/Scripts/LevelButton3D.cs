@@ -29,7 +29,7 @@ public class LevelButton3D : MonoBehaviour
         if (levelNum <= BallBounce.completLevel)
         {
             Debug.Log("Ընտրվեց Լեվել: " + levelNum);
-
+            Level.level = levelNum;
             LevelSelected?.Invoke(levelNum);
         }
         

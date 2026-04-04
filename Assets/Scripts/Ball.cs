@@ -321,7 +321,6 @@ public class BallBounce : MonoBehaviour
     private int completSeg = 1;     // քանի ScoreZone է անցել առանց հարթակ դիպչելու
     private bool isFire = false;    // fire mode
 
-    public Clouds cloud;
     void Start()
     {
 
@@ -421,7 +420,7 @@ public class BallBounce : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("ScoreZone")) return;
-
+        other.enabled = false;
         Destroy(other.gameObject);
         completSeg++;
         if (LevelProgressBar.Instance != null)

@@ -24,7 +24,7 @@ public class LevelProgressBar : MonoBehaviour
 
 
         // 2. Հաշվում ենք, թե քանի հարթակ կա ընդհանուր (առանց վերջինի)
-        totalRings = TowerGenerator.Instance.ringCount - 1;
+        totalRings = 15;//TowerGenerator.Instance.ringCount - 1;
 
         // 3. Զրոյացնում ենք գիծը
         progressBar.minValue = 0;

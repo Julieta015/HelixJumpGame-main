@@ -5,8 +5,8 @@ public class LevelsColor : MonoBehaviour
     public Transform mapManager;
 
     [Header("Level Colors")]
-    public Color completedLevelColor = new Color32(255, 225, 0, 255);
-    public Color currentLevelColor = Color.yellow;
+    public Color completedLevelColor = new Color32(102, 178, 26, 255);
+    public Color currentLevelColor = new Color32(255, 208, 4, 255);
 
     private int lastProcessedCompletedLevel = -1;
     private int lastProcessedChildCount = -1;
