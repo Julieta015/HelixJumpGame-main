@@ -439,7 +439,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,6 @@ MonoBehaviour:
   splashFadeTime: 0.4
   segmentTouchSound: {fileID: 8300000, guid: 57aec39853f846646ad34d076cd9d4e0, type: 3}
   splashPrefab: {fileID: 6975491736397112366, guid: 649a3d6626b1f9040bb42bcfc3e9c247, type: 3}
-  cloud: {fileID: 0}
 --- !u!54 &491600754
 Rigidbody:
   m_ObjectHideFlags: 0
