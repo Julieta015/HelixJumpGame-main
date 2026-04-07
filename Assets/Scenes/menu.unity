@@ -4083,7 +4083,7 @@ MonoBehaviour:
   startZ: 0
   verticalStep: 0
   forwardStep: 3
-  sideCurve: 0.5
+  sideCurve: 0.8
   sineFrequency: 1
 --- !u!4 &528005972
 Transform:
@@ -6065,8 +6065,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750511770}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27428785, y: -0.6517409, z: -0.6517409, w: -0.27428785}
-  m_LocalPosition: {x: 0, y: -1.42, z: 20.56}
+  m_LocalRotation: {x: -0.22217858, y: -0.6712948, z: -0.6712948, w: 0.22217858}
+  m_LocalPosition: {x: 0.354278, y: -1.42, z: 20.48353}
   m_LocalScale: {x: 8.74157, y: 9.385511, z: 7.979011}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6083,7 +6083,7 @@ Transform:
   - {fileID: 2087823549}
   - {fileID: 126766594}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -225.648}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -143.374}
 --- !u!1 &759816758
 GameObject:
   m_ObjectHideFlags: 0
@@ -10280,7 +10280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb72df47227574b4eb2177f61f0ff474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowMap
-  scrollSpeed: 0.09
+  scrollSpeed: 0.01
   minZ: -8
   maxZ: 15
 --- !u!114 &1327311170
@@ -14301,8 +14301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884317892}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27428785, y: -0.6517409, z: -0.6517409, w: -0.27428785}
-  m_LocalPosition: {x: 0, y: -1.42, z: 14}
+  m_LocalRotation: {x: 0.18807393, y: -0.68163645, z: -0.68163645, w: -0.18807393}
+  m_LocalPosition: {x: -4.051236, y: -1.42, z: 12.4799}
   m_LocalScale: {x: 8.74157, y: 9.385511, z: 7.979011}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14319,7 +14319,7 @@ Transform:
   - {fileID: 340773796}
   - {fileID: 917020097}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -225.648}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -210.85}
 --- !u!1 &1931966943
 GameObject:
   m_ObjectHideFlags: 0
