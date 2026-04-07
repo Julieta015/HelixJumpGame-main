@@ -10162,7 +10162,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 28.970562
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -10280,9 +10280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb72df47227574b4eb2177f61f0ff474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowMap
-  scrollSpeed: 0.5
+  scrollSpeed: 0.1
   minZ: 0
-  maxZ: 20
+  maxZ: 1000
 --- !u!114 &1327311170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10312,8 +10312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMove
   mapManager: {fileID: 528005972}
-  speed: 5
-  offset: {x: 4, y: 5, z: -10}
+  speed: 0.5
+  offset: {x: 0, y: 5, z: -1.86}
 --- !u!114 &1327311172
 MonoBehaviour:
   m_ObjectHideFlags: 0
