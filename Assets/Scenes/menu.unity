@@ -10281,8 +10281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowMap
   scrollSpeed: 0.5
-  minY: 0
-  maxY: 31
+  minZ: 0
+  maxZ: 20
 --- !u!114 &1327311170
 MonoBehaviour:
   m_ObjectHideFlags: 0

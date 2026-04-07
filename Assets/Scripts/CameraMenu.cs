@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 public class CameraFollowMap : MonoBehaviour
 {
     public float scrollSpeed = 0.5f; // Շարժվելու արագությունը
-    public float minY = 0f;          // Ամենացածր կետը (Level 1)
-    public float maxY = 40f;         // Ամենաբարձր կետը (Level 20)
+    public float minZ = 0f;          // Ամենացածր կետը (Level 1)
+    public float maxZ = 40f;         // Ամենաբարձր կետը (Level 20)
 
     private Vector3 lastMousePosition;
 
@@ -29,12 +29,12 @@ public class CameraFollowMap : MonoBehaviour
             Vector3 delta = Input.mousePosition - lastMousePosition;
 
             // Շարժում ենք տեսախցիկը Y և Z առանցքներով, բայց ոչ X
-            float moveY = delta.y * scrollSpeed * Time.deltaTime;
+            float moveZ = delta.y * scrollSpeed;
 
-            Vector3 newPos = transform.position + new Vector3(0f, -moveY, -moveY * 0.6f);
+            Vector3 newPos = transform.position + new Vector3(0f, 0f, moveZ);
 
             // Սահմանափակում ենք, որ տեսախցիկը քարտեզից դուրս չգնա
-            newPos.y = Mathf.Clamp(newPos.y, minY + 5f, maxY);
+            newPos.z = Mathf.Clamp(newPos.z, minZ + 5f, maxZ);
 
             transform.position = newPos;
             lastMousePosition = Input.mousePosition;
