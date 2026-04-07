@@ -10280,9 +10280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb72df47227574b4eb2177f61f0ff474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowMap
-  scrollSpeed: 0.1
-  minZ: 0
-  maxZ: 1000
+  scrollSpeed: 0.09
+  minZ: -8
+  maxZ: 15
 --- !u!114 &1327311170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10312,8 +10312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMove
   mapManager: {fileID: 528005972}
-  speed: 0.5
-  offset: {x: 0, y: 5, z: -1.86}
+  speed: 0.4
+  offset: {x: 0, y: 5, z: 0}
 --- !u!114 &1327311172
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class CameraFollowMap : MonoBehaviour
             // Շարժում ենք տեսախցիկը Y և Z առանցքներով, բայց ոչ X
             float moveZ = delta.y * scrollSpeed;
 
-            Vector3 newPos = transform.position + new Vector3(0f, 0f, moveZ);
+            Vector3 newPos = transform.position + new Vector3(0f, 0f, -moveZ);
 
             // Սահմանափակում ենք, որ տեսախցիկը քարտեզից դուրս չգնա
             newPos.z = Mathf.Clamp(newPos.z, minZ + 5f, maxZ);
