@@ -226,7 +226,7 @@ public class RingRandomizer : MonoBehaviour
             MeshRenderer mr = seg.GetComponent<MeshRenderer>();
 
             if (dangerSegments.Contains(seg))
-                continue;
+                continue;//re
 
             Material levelMaterial = GetMaterialByIndex(materials, Level.level - 1);
             if (mr != null && levelMaterial != null)

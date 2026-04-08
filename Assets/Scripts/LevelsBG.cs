@@ -17,7 +17,7 @@ public class LevelsBG : MonoBehaviour
         //}
         //else
         //{
-            bg = transform.GetChild(Level.level-1);
+            bg = transform.GetChild(Level.level -1);
         //}
         
         bg.gameObject.SetActive(true);

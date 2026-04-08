@@ -4141,7 +4141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerGenerator
   ball: {fileID: 491600752}
-  finish: {fileID: 2100000, guid: 3928cca53b0371e4ea725e3393973aa1, type: 2}
+  finish: {fileID: 2100000, guid: 1d6f16e0385686945a186366ea927ea0, type: 2}
   ringPrefab: {fileID: 7386193763591683950, guid: a41bad4e4264452459950cab001c5747, type: 3}
   ringCount: 15
   ringHeight: 0.29

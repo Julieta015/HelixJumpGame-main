@@ -323,7 +323,7 @@ public class BallBounce : MonoBehaviour
 
     void Start()
     {
-
+        Level.level = completLevel;
 
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -524,7 +524,7 @@ public class BallBounce : MonoBehaviour
 
     Material GetLevelMaterial()
     {
-        return GetMaterialByIndex(materials, Level.level - 1);
+        return GetMaterialByIndex(materials, Level.level -1);
     }
 
     Material GetMaterialByIndex(List<Material> source, int rawIndex)
