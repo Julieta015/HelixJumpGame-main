@@ -317,7 +317,7 @@ public class BallBounce : MonoBehaviour
     public GameObject splashPrefab;
     private bool change = false;
     public static int completLevel = 1;
-
+    public float speed = 0.8f;
     private int completSeg = 1;     // քանի ScoreZone է անցել առանց հարթակ դիպչելու
     private bool isFire = false;    // fire mode
 
@@ -341,7 +341,7 @@ public class BallBounce : MonoBehaviour
 
         // ցանկալի (կայուն ֆիզիկա)
         rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        //rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
     void Update()
@@ -482,8 +482,10 @@ public class BallBounce : MonoBehaviour
         if (rb.linearVelocity.y <= 0f)
         {
             Vector3 v = rb.linearVelocity;
-            v.y = bounceForce;          // միշտ նույն բարձրության համար նույն Y արագություն
+            v.y = bounceForce;
+           
             rb.linearVelocity = v;
+
         }
     }
 
